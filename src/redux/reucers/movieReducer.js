@@ -6,17 +6,19 @@ const initialState = {
   movies: [],
 };
 
-const movieReducer = (state = initialState, action) => {
-  const { type, payload } = action;
+const movieReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ActionTypes.MOVIES_LOADING:
-      console.log(action);
-      console.log(state);
       return { ...state, isLoading: true };
-    case ActionTypes.MOVIES_SUCCESS:
-      return { ...state, isLoading: false, movies: payload };
     case ActionTypes.MOVIES_ERROR:
       return { ...state, isLoading: false, error: payload };
+    case ActionTypes.MOVIES_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        movies: payload.resultss,
+      };
     default:
       return state;
   }
