@@ -17,7 +17,7 @@ const movieReducer = (state = initialState, { type, payload }) => {
         ...state,
         isLoading: false,
         error: null,
-        movies: payload.resultss,
+        movies: payload.results,
       };
     default:
       return state;
